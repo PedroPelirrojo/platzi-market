@@ -1,6 +1,6 @@
 package com.platzi.market.persistence.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 
@@ -28,12 +28,19 @@ public class Producto {
 
     private Boolean estado;
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     @ManyToOne
     @JoinColumn(name= "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "producto")
-    private List<ComprasProducto> productos;
+
 
     public Integer getIdProducto() {
         return idProducto;
